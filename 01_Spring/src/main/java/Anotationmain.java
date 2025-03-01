@@ -1,12 +1,12 @@
 import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import model.Toyota;
-import model.kia;
-public class SpringMain {
+
+public class Anotationmain {
 
 	public static void main(String[] args) {
-		ApplicationContext ctx = new ClassPathXmlApplicationContext("bean.xml");
+		ApplicationContext ctx=new AnnotationConfigApplicationContext();
 		
 		String[] beans = ctx.getBeanDefinitionNames();
 		
@@ -15,9 +15,7 @@ public class SpringMain {
 			System.out.println(name);
 		}
 		
-		Toyota car = ctx.getBean(Toyota.class);
 
-		
 	}
 
 }

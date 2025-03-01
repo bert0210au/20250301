@@ -5,7 +5,21 @@
         http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
     <!-- bean definitions here -->
+    <!--setting injection-->
+    <!--
+		<bean id="toyota" class="model.Toyota">
+    		<property name="Engine" ref="toyotaEngine"></property>
+   		</bean>
+		
+	-->
     
-    <bean id="Toyota" class="model.Toyota"></bean>
+    <bean id="toyota" class="model.Toyota">
+    	<!-- 建構式注入 -->
+   		<constructor-arg ref="toyotaEngine"></constructor-arg>
+   	</bean>
+    
+    <bean id="toyotaEngine" class="model.ToyotaEngine"></bean>
+    
+    <bean id="kia" class="model.kia"></bean
 
 </beans>
