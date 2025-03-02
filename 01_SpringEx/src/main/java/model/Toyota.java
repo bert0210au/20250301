@@ -1,8 +1,15 @@
-package com.bean;
+package model;
 
 public class Toyota{
 	Engine engine;
 	
+	
+	
+	public Toyota() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
 	public Toyota(Engine engine) {
 		this.engine=engine;
 	}

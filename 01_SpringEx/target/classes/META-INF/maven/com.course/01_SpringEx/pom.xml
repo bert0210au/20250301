@@ -3,16 +3,16 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.course</groupId>
-	<artifactId>00_Maven</artifactId>
+	<artifactId>01_SpringEx</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 
 	<dependencies>
-		<!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
+		<!--
+		https://mvnrepository.com/artifact/org.springframework/spring-context -->
 		<dependency>
-			<groupId>org.projectlombok</groupId>
-			<artifactId>lombok</artifactId>
-			<version>1.18.30</version>
-			<scope>provided</scope>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context</artifactId>
+			<version>6.1.14</version>
 		</dependency>
 
 	</dependencies>
