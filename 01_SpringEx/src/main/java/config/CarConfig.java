@@ -19,7 +19,7 @@ public class CarConfig {
 		return new Kia(new KiaEngine());
 	}
 	
-	@Bean(name="Benz")
+	@Bean(name="Bmw")
 	public Tesla tesla() {
 		return new Tesla(new ToyotaEngine());
 	}
