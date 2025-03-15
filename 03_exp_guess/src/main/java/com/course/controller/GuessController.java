@@ -1,15 +1,24 @@
 package com.course.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.course.model.ResultBean;
 import com.course.service.GuessService;
+
+import jakarta.servlet.http.HttpSession;
+import jakarta.websocket.Session;
 
 @Controller
 public class GuessController {
 	
+	@Autowired
+	HttpSession httpSession;
 	@Autowired
 	private GuessService guessService;
 	
@@ -22,12 +31,16 @@ public class GuessController {
 	public String newGame() {
 		System.out.println("newGame");
 		guessService.getAnswer();
+		System.out.println("Session:"+httpSession.getId());
 		return "index";
 	}
 	
 	@GetMapping("/guess")
-	public String guessAnswer(@RequestParam("guessNum") String guessNumber) {
+	public String guessAnswer(@RequestParam("guessNum") String guessNumber, Model model) {
 		System.out.println("guess: "+guessNumber);
+		guessService.checkAnswer(guessNumber);
+		List<ResultBean> historyList = guessService.getHistory();
+		model.addAttribute("history", historyList);
 		return "index";
 	}
 	
