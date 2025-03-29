@@ -1,0 +1,14 @@
+# logging.level.[類別的package]=[級別]
+server:
+  port: 9000
+logging:
+  level:
+    com.course: trace
+    com.course.service: debug
+    com.course.controller: info
+
+  # 在指定路徑當中，新增日誌檔，如不指定預設為專案目錄
+  file:
+    #name: springboot.log
+    # 指定目錄，並在該目錄下建立預設名稱為spring.log日誌檔，path跟name擇一配置
+    path: C:/Users/student/log
