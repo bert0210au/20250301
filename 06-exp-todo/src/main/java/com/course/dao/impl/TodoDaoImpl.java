@@ -10,11 +10,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
+import org.springframework.stereotype.Repository;
 
 import com.course.dao.TodoDao;
 import com.course.model.TodoDto;
 
-
+@Repository
 public class TodoDaoImpl implements TodoDao {
 
 	Logger logger = LoggerFactory.getLogger(TodoDaoImpl.class);
@@ -28,6 +29,7 @@ public class TodoDaoImpl implements TodoDao {
 		
 		StringBuilder sb = new StringBuilder();
 		sb.append("SELECT ");
+		// sb.append("*");
 		sb.append("T.ID, ");
 		sb.append("T.TITLE, ");
 		sb.append("T.DUE_DATE, ");
@@ -97,6 +99,5 @@ public class TodoDaoImpl implements TodoDao {
 		
 		return result;
 	}
-
 
 }

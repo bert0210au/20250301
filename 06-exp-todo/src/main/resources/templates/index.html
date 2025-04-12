@@ -1,11 +1,17 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
 <title>代辦事項</title>
 </head>
 <body>
-<h1>代辦事項</h1>
+<div>
+	<img th:src="@{img/todo{id}.jpg (id=${2})}" width="800px"/>
+</div>
+<p th:text="${title}">代辦事項</p> <!-- text純文字 -->
+<p th:utext="${title}">代辦事項</p> <!-- utext使用html標籤效果 -->
+
+<a th:href="@{/toAddPage}" href="/toAddPage">新增</a>
 
 <table border="1">
 	<tr>
@@ -14,6 +20,17 @@
 		<td>狀態</td>
 		<td>功能</td>
 	</tr>
+	
+	<tr th:each="todo :${todoList}">
+		<td th:text="${todo.title}">標題</td>
+		<td th:text="${todo.dueDate}">到期日</td>
+		<td th:text="${todo.memo}">狀態</td>
+		<td>
+			<a th:href="@{/toEditPage/{id} (id=${todo.id})}">編輯</a>
+			<a th:href="@{/delete/{id} (id=${todo.id})}">刪除</a>
+		</td>
+	</tr>
+	
 </table>
 
 <hr/>
