@@ -1,5 +1,8 @@
 package com.course.service;
 
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -7,13 +10,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.course.dao.TodoDao;
-import com.course.model.SearchCondition;
 import com.course.model.TodoDto;
 import com.course.model.TodoVo;
 
 @Service
 public class TodoService {
-
+	
 	@Autowired
 	private TodoDao todoDao;
 	
@@ -22,9 +24,25 @@ public class TodoService {
 	
 	public List<TodoVo> getAllTodoList() {
 		List<TodoDto> dtoList = todoDao.findAll();
+		
+		// 以下寫法同義
+//		for (TodoDto dto : dtoList) {
+//			dto.setMemo("XXXX");
+//		}
+//		dtoList.stream().forEach(d -> d.setMemo("XXXX"));
+		
+		// 以下寫法同義
+//		List<TodoVo> resultList = new ArrayList<>();
+//		for (TodoDto todoDto : dtoList) {
+//			TodoVo vo = helper.convertToVo(todoDto);
+//			resultList.add(vo);
+//		}
+//		return resultList;
+		
 		return dtoList.stream().map(dto -> helper.convertToVo(dto)).collect(Collectors.toList());
 	}
 	
+
 	/**
 	 * 新增待辦事項
 	 * @param todoVo
@@ -48,15 +66,6 @@ public class TodoService {
 	}
 	
 	/**
-	 * 更新待辦事項
-	 * @param todoVo
-	 */
-	public void updateTodo(TodoVo todoVo) {
-		TodoDto dto = helper.convertToDto(todoVo);
-		todoDao.update(dto);
-	}
-
-	/**
 	 * 透過 ID 搜尋
 	 * @param id
 	 * @return
@@ -66,11 +75,15 @@ public class TodoService {
 		return helper.convertToVo(dto);
 	}
 	
-	public List<TodoVo> searchByCondition(SearchCondition condition) {
-		List<TodoDto> dtoList = todoDao.findByCondition(condition);
-		return dtoList.stream().map(dto -> helper.convertToVo(dto)).collect(Collectors.toList());
+
+	/**
+	 * 更新待辦事項
+	 * @param todoVo
+	 */
+	public void updateTodo(TodoVo todoVo) {
+		TodoDto dto = helper.convertToDto(todoVo);
+		todoDao.update(dto);
 	}
-	
-	
+
 	
 }
