@@ -4,6 +4,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
@@ -111,7 +112,7 @@ public class TodoService {
 	
 	@Transactional
 	public Integer updateQuery(Long id,String title) {
-		return todoRepository.updateTodo(id, title);
+		return todoRepository.updateTodoQuery(id, title);
 	}
 	
 	public List<TodoEntity> getByTitleSort(String title) {

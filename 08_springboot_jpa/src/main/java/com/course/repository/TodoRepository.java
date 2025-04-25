@@ -48,8 +48,8 @@ public interface TodoRepository extends JpaRepository<TodoEntity, Long>{
 	List<TodoEntity> findByCondition(String title, Integer status);
 	
 	@Modifying
-	@Query("update Todo set title = ?2 where id = ?1")
-	Integer updateTodo(Long id, String title);
+	@Query("update TodoEntity set title = ?2 where id = ?1")
+	Integer updateTodoQuery(Long id, String title);
 	
 	public List<TodoEntity> findByTitle(String title, Sort sort);
 }
