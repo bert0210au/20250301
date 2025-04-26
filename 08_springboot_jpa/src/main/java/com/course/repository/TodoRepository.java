@@ -3,12 +3,15 @@ package com.course.repository;
 import java.util.Date;
 import java.util.List;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
+import com.course.dto.TodoDto;
 import com.course.entity.TodoEntity;
 
 @Repository
@@ -52,4 +55,9 @@ public interface TodoRepository extends JpaRepository<TodoEntity, Long>{
 	Integer updateTodoQuery(Long id, String title);
 	
 	public List<TodoEntity> findByTitle(String title, Sort sort);
+	
+	public Page<TodoEntity> findAll(Pageable pageable);
+	
+	@Query("select new com.course.dto.TodoDto(t.title, u.username) from TodoEntity t join UserEntity u on u.id = t.userId")
+	List<TodoDto> getTodoDtoList();
 }

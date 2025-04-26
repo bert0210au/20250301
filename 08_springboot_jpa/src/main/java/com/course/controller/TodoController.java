@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.course.dto.TodoDto;
 import com.course.entity.TodoEntity;
 import com.course.service.TodoService;
 
@@ -116,5 +118,17 @@ public class TodoController {
 	@GetMapping("/todo/titleSort/{title}")
 	public List<TodoEntity> getByTitleSort(@PathVariable String title) {
 		return todoService.getByTitleSort(title);
+	}
+	
+	@Operation(summary = "取得所有商品並分頁", tags = "page")
+	@GetMapping("/todo/page/")
+	public Page<TodoEntity> getAllWithPage(Integer pageNum, Integer size) {
+		return todoService.getAllWithPage(pageNum, size);
+	}
+	
+	@Operation(summary = "取得使用者", tags = "@QueryMethod")
+	@GetMapping("/todo/user")
+	public List<TodoDto> findUser() {
+		return todoService.findUser();
 	}
 }

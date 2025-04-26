@@ -4,12 +4,15 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
+import com.course.dto.TodoDto;
 import com.course.entity.TodoEntity;
 import com.course.repository.TodoRepository;
 
@@ -119,6 +122,16 @@ public class TodoService {
 //		Sort sort = Sort.by("dueDate");
 		Sort sort = Sort.by(Sort.Order.desc("dueDate"));
 		return todoRepository.findByTitle(title, sort);
+	}
+	
+	public Page<TodoEntity> getAllWithPage(Integer pageNum, Integer size) {
+		Pageable pageable = PageRequest.of(pageNum, size);
+		return todoRepository.findAll(pageable);
+	}
+	
+	public List<TodoDto> findUser() {
+		List<TodoDto> dtoList = todoRepository.getTodoDtoList();
+		return dtoList;
 	}
 
 }
