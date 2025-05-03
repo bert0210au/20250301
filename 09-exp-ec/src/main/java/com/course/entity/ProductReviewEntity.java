@@ -11,12 +11,12 @@ import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "PRODUCTREVIEW")
+@Table(name = "PRODUCT_REVIEW")
 public class ProductReviewEntity {
 	
 	@Id
-	@GeneratedValue(strategy= GenerationType.SEQUENCE, generator="TODO_SEQ_GENERATOR")
-	@SequenceGenerator(name = "TODO_SEQ_GENERATOR",sequenceName="TODO_SEQ",allocationSize= 1)
+	@GeneratedValue(strategy= GenerationType.SEQUENCE, generator="PRODUCT_SEQ_GENERATOR")
+	@SequenceGenerator(name = "PRODUCT_SEQ_GENERATOR",sequenceName="PRODUCT_SEQ",allocationSize= 1)
 	private Long id;
 	@Column
 	private String memo;

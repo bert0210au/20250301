@@ -16,8 +16,8 @@ import jakarta.persistence.Table;
 public class CategoryEntity {
 	
 	@Id
-	@GeneratedValue(strategy= GenerationType.SEQUENCE, generator="TODO_SEQ_GENERATOR")
-	@SequenceGenerator(name = "TODO_SEQ_GENERATOR",sequenceName="TODO_SEQ",allocationSize= 1)
+	@GeneratedValue(strategy= GenerationType.SEQUENCE, generator="PRODUCT_SEQ_GENERATOR")
+	@SequenceGenerator(name = "PRODUCT_SEQ_GENERATOR",sequenceName="PRODUCT_SEQ",allocationSize= 1)
 	private Long id;
 	
 	@Column

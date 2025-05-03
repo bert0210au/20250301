@@ -13,12 +13,12 @@ import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "PRODUCTPRICE")
+@Table(name = "PRODUCT_PRICE")
 public class ProductPriceEntity {
 	
 	@Id
-	@GeneratedValue(strategy= GenerationType.SEQUENCE, generator="TODO_SEQ_GENERATOR")
-	@SequenceGenerator(name = "TODO_SEQ_GENERATOR",sequenceName="TODO_SEQ",allocationSize= 1)
+	@GeneratedValue(strategy= GenerationType.SEQUENCE, generator="PRODUCT_SEQ_GENERATOR")
+	@SequenceGenerator(name = "PRODUCT_SEQ_GENERATOR",sequenceName="PRODUCT_SEQ",allocationSize= 1)
 	private Long id;
 	
 	@Column

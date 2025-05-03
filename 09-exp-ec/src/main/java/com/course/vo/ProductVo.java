@@ -4,6 +4,8 @@ import java.math.BigDecimal;
 import java.util.List;
 
 public class ProductVo {
+	
+	private Long id;
 
 	private String code;
 	
@@ -65,5 +67,14 @@ public class ProductVo {
 		this.categories = categories;
 	}
 
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+	
+	
 
 }
